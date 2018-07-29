@@ -91,7 +91,23 @@ void* vector_remove(struct vector* v, const size_t r);
 
 void vector_traverse(const struct vector* v, void (*callback) (void* element));
 
+/*
+ * 对向量进行排序
+ * 
+ * @param v                   进行排序的向量
+ * @param compare             判断带大小的回调函数 若 a > b 返回 1 (true)
+ */
 
+void vector_sort(struct vector* v, int (*compare) (void* a, void* b));
+
+/*
+ * 内置的排序函数
+ * 
+ * @param a                   比较的元素 a b 指针  
+ * @param b                     
+ * @return                    1 -> true, 0 -> false
+ */
+int vector_compare(void* a, void* b);
 #ifdef __cplusplus
 }
 #endif

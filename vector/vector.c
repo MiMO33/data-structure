@@ -102,11 +102,22 @@ void* vector_remove(struct vector* v, const size_t r)
     return result;
 }
 
-void vector_traverse(struct vector* v, void (*callback) (void* element))
+void vector_traverse(const struct vector* v, void (*callback) (void* element))
 {   
     void* dest = malloc(v->element_size);
     void* source = v->base;
     for(size_t i = 0; i < v->size; i++){
-        callback(memcpy(dest, source + i * v->element_size, v->element_size));
+        memcpy(dest, source + i * v->element_size, v->element_size);
+        callback(dest);
     }
+}
+
+int vector_compare(void* a, void* b)
+{
+    return *(int*)a > *(int*)b;
+}
+
+void vector_sort(struct vector* v, int (*compare) (void* a, void* b))
+{
+
 }

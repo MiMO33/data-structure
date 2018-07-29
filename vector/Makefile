@@ -2,7 +2,7 @@ CC = gcc
 CCFALGS = -Wall -g -std=c89
 
 all: main.o vector.o 
-	$(CC) $(CCFLAGS) vector.o main.o -o vector_test
+	$(CC) $(CCFLAGS) vector.o main.o -o vector_test.out
 
 main.o: main.c
 	$(CC) -c $(CCFLAGS) main.c
