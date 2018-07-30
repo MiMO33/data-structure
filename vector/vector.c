@@ -119,5 +119,5 @@ int vector_compare(void* a, void* b)
 
 void vector_sort(struct vector* v, int (*compare) (void* a, void* b))
 {
-
+    sort_bubble(v->base, v->size, v->element_size, compare);
 }

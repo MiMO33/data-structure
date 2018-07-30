@@ -14,9 +14,9 @@
  * 
  */
 
-void sort(const void* base, 
+void sort_bubble(void* base, 
           const size_t length, 
           const size_t element_size, 
-          int* (compare)(void* a, void* b));
+          int (compare)(void* a, void* b));
 
 #endif

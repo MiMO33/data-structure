@@ -7,6 +7,8 @@
 #include<assert.h>
 #include<string.h>
 
+#include"../sort/bubble_sort.h"
+
 #ifndef DS_VECTOR_H__
 #define DS_VECTOR_H__
 
