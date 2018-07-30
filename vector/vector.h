@@ -109,7 +109,16 @@ void vector_sort(struct vector* v, int (*compare) (void* a, void* b));
  * @param b                     
  * @return                    1 -> true, 0 -> false
  */
+
 int vector_compare(void* a, void* b);
+
+/*
+ * 释放 vector 内存
+ * 
+ * @param v                   vector的指针
+ */
+
+void vector_free(vector* v);
 #ifdef __cplusplus
 }
 #endif

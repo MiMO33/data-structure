@@ -121,3 +121,8 @@ void vector_sort(struct vector* v, int (*compare) (void* a, void* b))
 {
     sort_bubble(v->base, v->size, v->element_size, compare);
 }
+
+void vector_free(vector* v){
+    assert(v);
+    free(v);
+}
