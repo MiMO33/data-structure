@@ -9,7 +9,8 @@ typedef struct stack{
     void* base;
 }stack;
 
-struct stack* stack_init(size_t element_size){
+struct stack* stack_init(size_t element_size)
+{
     struct stack* s = malloc(sizeof(stack));
     s->element_size = element_size;
     s->capacity = DS_STACK_CAPACITY;
@@ -36,7 +37,8 @@ static void shrink(struct stack* s)
     s->base = new_base;
 }
 
-static void resize(struct stack* s){
+static void resize(struct stack* s)
+{
     if(s->top == -1){
         return;
     }
@@ -67,4 +69,9 @@ void* stack_top(struct stack* s)
 {
     void* re = malloc(s->element_size);
     memcpy(re, s->base + s->top * s->element_size, s->element_size);
+}
+
+int stack_empty(struct stack* s)
+{
+    return s->top == -1;
 }
