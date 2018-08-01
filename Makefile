@@ -13,5 +13,8 @@ vector.o: sort/bubble_sort.h vector/vector.h vector/vector.c
 bubble_sort.o: sort/bubble_sort.c sort/bubble_sort.h
 	$(CC) -c $(CCFLAGS) sort/bubble_sort.c
 
+stack.o: stack/stack.h stack/stack.c
+	$(CC) -c $(CCFLAGS) stack/stack.c
+
 clean: 
 	rm *.o 

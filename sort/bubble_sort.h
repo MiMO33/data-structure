@@ -6,7 +6,7 @@
 #define DS_BUBBLE_SORT_H__
 
 /*
- * 起跑排序
+ * 起泡排序
  * @param base                开始的地址
  * @param length              所含元素的数量
  * @param element_size        元素的长度

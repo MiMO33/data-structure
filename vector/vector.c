@@ -7,7 +7,7 @@ typedef struct vector{
     void* base;
 }vector;
 
-static void vector_expand(struct vector* v)
+static void expand(struct vector* v)
 {
     v->capacity *= 2;
     void* new_base = malloc(v->capacity * v->element_size);
@@ -16,7 +16,7 @@ static void vector_expand(struct vector* v)
     v->base = new_base;
 }
 
-static void vector_shrink(struct vector* v)
+static void shrink(struct vector* v)
 {
     v->capacity /= 2;
     void* new_base = malloc(v->capacity * v->element_size);
@@ -25,12 +25,12 @@ static void vector_shrink(struct vector* v)
     v->base = new_base;
 }
 
-static void vector_resize(struct vector* v)
+static void resize(struct vector* v)
 {
     if(v->size >= DS_VECTOR_CAPACITY * 2 && ((double)v->size / v->capacity) < 0.25){
-        vector_shrink(v);
+        shrink(v);
     }else if(((double)v->size / v->capacity) > 0.75){
-        vector_expand(v);
+        expand(v);
     }
 }
 
@@ -73,7 +73,7 @@ void vector_insert(struct vector* v,const size_t r,const void* e)
 {
     assert(v && e);
     assert(r >= 0);
-    vector_resize(v);
+    resize(v);
 
     void* dest = v->base + (r + 1) * v->element_size;
     void* source = v->base + r * v->element_size;
@@ -88,7 +88,7 @@ void* vector_remove(struct vector* v, const size_t r)
 {
     assert(v);
     assert(r >= 0);
-    vector_resize(v);
+    resize(v);
 
     void* result = malloc(v->element_size);
     void* source = v->base + r * v->element_size;
@@ -124,5 +124,6 @@ void vector_sort(struct vector* v, int (*compare) (void* a, void* b))
 
 void vector_free(vector* v){
     assert(v);
+    free(v->base);
     free(v);
 }
