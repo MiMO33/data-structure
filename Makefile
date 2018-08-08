@@ -1,5 +1,5 @@
 CC = gcc
-CCFALGS = -Wall -g -std=c89
+CCFALGS = -Wall -g -O -std=c89
 
 all: main.o vector.o bubble_sort.o
 	$(CC) $(CCFLAGS) bubble_sort.o vector.o main.o -o vector_test.out
